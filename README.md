@@ -24,3 +24,5 @@ Pretty random but awesome videos
 The main illustrator course is 10/10 would definitely recommend
 - [CG Cookie](https://cgcookie.com/)
 Monthly based subscription service kinda like egghead with all things blender and even some unity
+- [Blender Secrets](https://www.blendersecrets.org/book)
+Amazing ebook with a lot of tidbits
