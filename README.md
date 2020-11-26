@@ -17,6 +17,8 @@ Youtube Channel to learn blender mostly focused on Sci-fi Scenes and concepts
 This is also a really good playlist to get started with blender
 - [CG Geek](https://www.youtube.com/channel/UCG8AxMVa6eutIGxrdnDxWpQ)
 Pretty random but awesome videos
+- [Imphenzia](https://www.youtube.com/channel/UCzfWju7SFoWLCyV_gDVCrGA)
+Learn Blender the Swedish way: E to extrude, S to Scale
 
 ### Paid
 
