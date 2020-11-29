@@ -10,6 +10,7 @@
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^3.0.0",
     "autoprefixer": "^10.0.4",
+    "eslint-plugin-react": "^7.21.5",
     "gray-matter": "^4.0.2",
     "next": "latest",
     "next-mdx-remote": "^1.0.0",
@@ -23,6 +24,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@ui-devtools/tailwind": "ui-devtools/tailwind"
+    "@ui-devtools/tailwind": "ui-devtools/tailwind",
+    "eslint": "^7.14.0",
+    "glob": "^7.1.6"
   }
 }
