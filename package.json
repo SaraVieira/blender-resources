@@ -5,7 +5,8 @@
     "dev": "next --port 3000",
     "dev:watch": "next-remote-watch ./posts",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "postbuild": "next-on-netlify"
   },
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^3.0.0",
@@ -16,6 +17,7 @@
     "gray-matter": "^4.0.2",
     "next": "latest",
     "next-mdx-remote": "^1.0.0",
+    "next-on-netlify": "^2.6.3",
     "next-remote-watch": "0.2.0",
     "open-graph-scraper": "^4.7.0",
     "postcss": "^8.1.10",
