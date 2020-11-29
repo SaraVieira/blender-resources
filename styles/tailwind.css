@@ -1,3 +1,71 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --site-color: royalblue;
+  --divider-color: rgba(0, 0, 0, 0.4);
+}
+
+html {
+  font: 100%/1.5 system-ui;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--divider-color);
+  text-decoration-thickness: 2px;
+}
+
+a:hover {
+  color: var(--site-color);
+  text-decoration-color: currentcolor;
+}
+
+h1,
+p {
+  margin-bottom: 1.5rem;
+}
+
+code {
+  font-family: "Menlo";
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+
+  position: relative;
+  margin: 100px auto;
+}
+
+.double-bounce1,
+.double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #333;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: sk-bounce 2s infinite ease-in-out;
+}
+
+.double-bounce2 {
+  animation-delay: -1s;
+}
+@keyframes sk-bounce {
+  0%,
+  100% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+}

@@ -1,8 +1,19 @@
+import { useRouter } from "next/router";
+import { useState } from "react";
 import Link from "next/link";
+import Footer from "./Footer";
 
 export default function Layout({ children }) {
+  const [searchValue, setSearchValue] = useState("");
+  const router = useRouter();
+
+  const search = (e) => {
+    e.preventDefault();
+    router.push(`/search?query=${searchValue}`);
+  };
+
   return (
-    <>
+    <div style={{ minHeight: "100vh" }}>
       <nav className="bg-gray-800">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
           <div className="relative flex items-center justify-between h-16">
@@ -21,9 +32,9 @@ export default function Layout({ children }) {
                   aria-hidden="true"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M4 6h16M4 12h16M4 18h16"
                   />
                 </svg>
@@ -36,9 +47,9 @@ export default function Layout({ children }) {
                   aria-hidden="true"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M6 18L18 6M6 6l12 12"
                   />
                 </svg>
@@ -104,7 +115,7 @@ export default function Layout({ children }) {
                       Categories
                     </a>
                   </Link>
-                  <Link href="#">
+                  <Link href="/add">
                     <a className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700">
                       Add Resource
                     </a>
@@ -112,6 +123,20 @@ export default function Layout({ children }) {
                 </div>
               </div>
             </div>
+            <form onSubmit={search}>
+              <label htmlFor="email" className="sr-only">
+                Email
+              </label>
+              <input
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+                type="search"
+                name="email"
+                id="email"
+                className="text-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-600 rounded-md bg-gray-800 placeholder-gray-300"
+                placeholder="Search"
+              />
+            </form>
           </div>
         </div>
 
@@ -146,41 +171,7 @@ export default function Layout({ children }) {
       </nav>
 
       <div className="wrapper">{children}</div>
-      <style jsx global>{`
-        * {
-          margin: 0;
-          padding: 0;
-        }
-
-        :root {
-          --site-color: royalblue;
-          --divider-color: rgba(0, 0, 0, 0.4);
-        }
-
-        html {
-          font: 100%/1.5 system-ui;
-        }
-
-        a {
-          color: inherit;
-          text-decoration-color: var(--divider-color);
-          text-decoration-thickness: 2px;
-        }
-
-        a:hover {
-          color: var(--site-color);
-          text-decoration-color: currentcolor;
-        }
-
-        h1,
-        p {
-          margin-bottom: 1.5rem;
-        }
-
-        code {
-          font-family: "Menlo";
-        }
-      `}</style>
-    </>
+      <Footer />
+    </div>
   );
 }

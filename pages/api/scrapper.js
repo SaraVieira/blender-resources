@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   res.setHeader("Content-Type", "application/json");
 
   const { ogImage, ogTitle, ogUrl, ogDescription } = result;
-  +res.end(
+  res.end(
     JSON.stringify({
       results: {
         image: !ogImage ? {} : Array.isArray(ogImage) ? ogImage[0] : ogImage,

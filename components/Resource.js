@@ -18,8 +18,10 @@ const Resource = ({ filePath, og, data }) => (
       <div className="flex-1">
         <p className="text-sm font-medium text-indigo-600">
           <Link
-            as={`/posts/${filePath.replace(/\.mdx?$/, "")}`}
-            href={`/posts/[slug]`}
+            href={`/categories/[slug]`}
+            as={`/categories/${encodeURIComponent(
+              data.category
+            ).toLocaleLowerCase()}`}
             class="hover:underline"
           >
             {data.category}
