@@ -1,0 +1,4 @@
+{
+    "presets": ["next/babel"],
+    "plugins": ["@ui-devtools/tailwind/babel"]
+  } 

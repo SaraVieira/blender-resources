@@ -1,12 +1,12 @@
-import fs from "fs";
-import matter from "gray-matter";
-import Link from "next/link";
-import path from "path";
 import { useState } from "react";
-import Layout from "../components/Layout";
-import { postFilePaths, POSTS_PATH } from "../utils/mdxUtils";
+import fs from "fs";
+import Link from "next/link";
+import matter from "gray-matter";
+import path from "path";
+import Layout from "../../components/Layout";
+import { postFilePaths, POSTS_PATH } from "../../utils/mdxUtils";
 
-export default function Index({ posts }) {
+export default function PostPage({ posts, slug }) {
   const [statePosts, setStatePosts] = useState(posts);
   const [freeFilter, setFreeFilter] = useState(false);
 
@@ -27,8 +27,8 @@ export default function Index({ posts }) {
         </div>
         <div class="relative max-w-7xl mx-auto">
           <div class="text-center">
-            <h2 class="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
-              All Resources
+            <h2 class="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl capitalize">
+              Resources {">"} {slug}
             </h2>
           </div>
           <button
@@ -111,24 +111,53 @@ export default function Index({ posts }) {
     </Layout>
   );
 }
-export async function getStaticProps() {
-  const data = postFilePaths.map(async (filePath) => {
-    const source = fs.readFileSync(path.join(POSTS_PATH, filePath));
-    const { content, data } = matter(source);
-    const res = await fetch(
-      `http://localhost:3000/api/scrapper?url=${data.Link}`
-    );
-    const { results: og } = await res.json();
 
-    return {
-      content,
-      data,
-      filePath,
-      og,
-    };
-  });
+export const getStaticProps = async ({ params }) => {
+  const data = postFilePaths
+    .map((filePath) => {
+      const source = fs.readFileSync(path.join(POSTS_PATH, filePath));
+      const { content, data } = matter(source);
 
+      return {
+        content,
+        data,
+        filePath,
+      };
+    })
+    .filter((a) => {
+      return a.data.category.toLowerCase() === decodeURIComponent(params.slug);
+    })
+    .map(async (post) => {
+      const res = await fetch(
+        `http://localhost:3000/api/scrapper?url=${post.data.Link}`
+      );
+      const { results: og } = await res.json();
+
+      return {
+        ...post,
+        og,
+      };
+    });
   const posts = await Promise.all(data);
 
-  return { props: { posts } };
-}
+  return { props: { posts, slug: params.slug } };
+};
+
+export const getStaticPaths = async () => {
+  const data = postFilePaths.map((filePath) => {
+    const source = fs.readFileSync(path.join(POSTS_PATH, filePath));
+    const { data } = matter(source);
+    return data.category;
+  });
+
+  const paths = Array.from(new Set(data)).map((d) => ({
+    params: {
+      slug: encodeURIComponent(d).toLowerCase(),
+    },
+  }));
+
+  return {
+    paths,
+    fallback: false,
+  };
+};

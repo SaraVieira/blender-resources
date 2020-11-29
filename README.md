@@ -1,54 +1,31 @@
-# MDX Remote Example
+# Blender Resources
 
-This example shows how a simple blog might be built using the [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) library, which allows mdx content to be loaded via `getStaticProps` or `getServerSideProps`. The mdx content is loaded from a local folder, but it could be loaded from a database or anywhere else.
+A list of resources and tools that have helped me learn blender
 
-The example also showcases [next-remote-watch](https://github.com/hashicorp/next-remote-watch), a library that allows next.js to watch files outside the `pages` folder that are not explicitly imported, which enables the mdx content here to trigger a live reload on change.
+## Tutorials
 
-Since `next-remote-watch` uses undocumented Next.js APIs, it doesn't replace the default `dev` script for this example. To use it, run `npm run dev:watch` or `yarn dev:watch`.
+### Free
 
-## Deploy your own
+- [THE Blender Doughnut](https://www.youtube.com/playlist?list=PLjEaoINr3zgEq0u2MzVgAaHEBt--xLB6U)
+  You will never look at donuts the same way. Seriously this is like 6 hours long but 10/10
+- [Polygon Runway](https://polygonrunway.com/p/become-a-3d-illustrator-in-one-hour)
+  Amazing free one hour quick start into 3D illustration
+- [Polygon Runway Youtube](https://www.youtube.com/channel/UCGSJevmBuDyxjLLOBNaYMGA)
+  Roman also has a lot of videos where he speeds through his illustrations.
+- [Ducky 3D](https://www.youtube.com/channel/UCuNhGhbemBkdflZ1FGJ0lUQ)
+  Youtube Channel to learn blender mostly focused on Sci-fi Scenes and concepts
+- [Grant Abbitt](https://www.youtube.com/watch?v=7MRonzqYJgw&list=PLn3ukorJv4vs_eSJUQPxBRaDS8PrVmIri)
+  This is also a really good playlist to get started with blender
+- [CG Geek](https://www.youtube.com/channel/UCG8AxMVa6eutIGxrdnDxWpQ)
+  Pretty random but awesome videos
+- [Imphenzia](https://www.youtube.com/channel/UCzfWju7SFoWLCyV_gDVCrGA)
+  Learn Blender the Swedish way: E to extrude, S to Scale
 
-Deploy the example using [Vercel](https://vercel.com):
+### Paid
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/vercel/next.js/tree/canary/examples/with-mdx-remote)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-mdx-remote with-mdx-remote-app
-# or
-yarn create next-app --example with-mdx-remote with-mdx-remote-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
-
-## Notes
-
-### Conditional custom components
-
-When using `next-mdx-remote`, you can pass custom components to the MDX renderer. However, some pages/MDX files might use components that are used infrequently, or only on a single page. To avoid loading those components on every MDX page, you can use `next/dynamic` to conditionally load them.
-
-For example, here's how you can change `getStaticProps` to conditionally add certain components:
-
-```js
-import dynamic from 'next/dynamic'
-
-// ...
-
-export async function getStaticProps() {
-  const { content, data } = matter(source)
-
-  const components = {
-    ...defaultComponents,
-    SomeHeavyComponent: /<SomeHeavyComponent/.test(content)
-      ? dynamic(() => import('SomeHeavyComponent'))
-      : null,
-  }
-
-  const mdxSource = await renderToString(content, { components })
-}
-```
-
-If you do this, you'll also need to check in the page render function which components need to be dynamically loaded. You can pass a list of component names via `getStaticProps` to accomplish this.
+- [Polygon Runway](https://polygonrunway.com/)
+  The main illustrator course is 10/10 would definitely recommend
+- [CG Cookie](https://cgcookie.com/)
+  Monthly based subscription service kinda like egghead with all things blender and even some unity
+- [Blender Secrets](https://www.blendersecrets.org/book)
+  Amazing ebook with a lot of tidbits
