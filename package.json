@@ -28,7 +28,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@ui-devtools/tailwind": "ui-devtools/tailwind",
     "eslint": "^7.14.0",
     "fs": "^0.0.1-security",
     "glob": "^7.1.6"
