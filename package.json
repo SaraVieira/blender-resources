@@ -12,16 +12,12 @@
     "@fullhuman/postcss-purgecss": "^3.0.0",
     "@tailwindcss/forms": "^0.2.1",
     "airtable": "^0.10.1",
-    "autoprefixer": "^10.0.4",
-    "eslint-plugin-react": "^7.21.5",
     "gray-matter": "^4.0.2",
     "next": "latest",
     "next-mdx-remote": "^1.0.0",
     "next-on-netlify": "^2.6.3",
     "next-remote-watch": "0.2.0",
     "open-graph-scraper": "^4.7.0",
-    "postcss": "^8.1.10",
-    "postcss-import": "^13.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "tailwindcss": "^2.0.1"
@@ -29,7 +25,10 @@
   "license": "MIT",
   "devDependencies": {
     "eslint": "^7.14.0",
-    "fs": "^0.0.1-security",
-    "glob": "^7.1.6"
+    "glob": "^7.1.6",
+    "autoprefixer": "^10.0.4",
+    "eslint-plugin-react": "^7.21.5",
+    "postcss": "^8.1.10",
+    "postcss-import": "^13.0.0"
   }
 }
