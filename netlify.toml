@@ -2,3 +2,6 @@
   command   = "npm run build"
   functions = "out_functions"
   publish   = "out_publish"
+
+[build.environment]
+  CIRCLE_NODE_TOTAL = "1"
