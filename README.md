@@ -1,5 +1,7 @@
 # Blender Resources
 
+WIP for a website, to add resources please add it in the posts folder in mdx format, Danke
+
 A list of resources and tools that have helped me learn blender
 
 ## Tutorials
