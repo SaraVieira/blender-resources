@@ -1,12 +1,28 @@
-import React from "react";
-import App from "next/app";
+import React, { useEffect } from "react";
 import "../styles/tailwind.css";
+import { useRouter } from "next/router";
+import * as Fathom from "fathom-client";
 
-class MyApp extends App {
-  render() {
-    const { Component, pageProps } = this.props;
-    return <Component {...pageProps} />;
-  }
-}
+const App = ({ Component, pageProps }) => {
+  const router = useRouter();
+  useEffect(() => {
+    Fathom.load("YHNPIPAF", {
+      includedDomains: ["https://blenderresources.com/"],
+    });
 
-export default MyApp;
+    function onRouteChangeComplete() {
+      Fathom.trackPageview();
+    }
+    // Record a pageview when route changes
+    router.events.on("routeChangeComplete", onRouteChangeComplete);
+
+    // Unassign event listener
+    return () => {
+      router.events.off("routeChangeComplete", onRouteChangeComplete);
+    };
+  }, []);
+
+  return <Component {...pageProps} />;
+};
+
+export default App;
