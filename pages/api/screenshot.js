@@ -1,4 +1,5 @@
 const chromium = require("chrome-aws-lambda");
+const puppeteer = require("puppeteer-core");
 const { v5 } = require("uuid");
 var cloudinary = require("cloudinary").v2;
 
@@ -29,19 +30,18 @@ export default async function handler(req, res) {
     return;
   }
 
-  const browser = await chromium.puppeteer.launch({
-    // Required
-    executablePath: await chromium.executablePath,
-
-    // Optional
+  const executablePath = await chromium.executablePath;
+  const browser = await puppeteer.launch({
+    executablePath,
     args: chromium.args,
-    defaultViewport: chromium.defaultViewport,
     headless: chromium.headless,
   });
 
   const page = await browser.newPage();
 
-  await page.goto(url);
+  await page.goto(url, {
+    waitUntil: ["domcontentloaded", "networkidle0"],
+  });
 
   const screenshot = await page.screenshot({ encoding: "binary" });
 
