@@ -1,7 +1,6 @@
 import glob from "glob";
 import fs from "fs";
 import matter from "gray-matter";
-import ogs from "open-graph-scraper";
 
 export const PATHS = glob
   .sync("posts/**/*")
@@ -19,25 +18,10 @@ export const getAllResources = async (noOg) => {
       };
     }
 
-    const { result } = await ogs({ url: data.Link });
-
-    const {
-      ogImage = {},
-      ogTitle = "",
-      ogUrl = "",
-      ogDescription = "",
-    } = result;
-
     return {
       content,
       data,
       filePath,
-      og: {
-        image: !ogImage ? {} : Array.isArray(ogImage) ? ogImage[0] : ogImage,
-        title: ogTitle.toString(),
-        url: ogUrl?.toString(),
-        description: ogDescription?.toString(),
-      },
       lastEdited: stats.mtime.toString(),
     };
   });

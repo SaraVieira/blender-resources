@@ -24,7 +24,7 @@ export default async function handler(req, res) {
     .execute();
 
   if (instances.total_count) {
-    res.json({ url: instances.resources[0].secure_url });
+    res.status(200).json({ url: instances.resources[0].secure_url });
 
     return;
   }
@@ -54,7 +54,7 @@ export default async function handler(req, res) {
     dataURI,
     { public_id: name },
     function (_, result) {
-      res.json({ url: result.secure_url });
+      res.status(200).json({ url: result.secure_url });
     }
   );
 }
