@@ -21,6 +21,9 @@ export const getAllResources = async (noOg) => {
     return {
       content,
       data,
+      og: {
+        image: {},
+      },
       filePath,
       lastEdited: stats.mtime.toString(),
     };
