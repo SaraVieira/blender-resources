@@ -38,11 +38,6 @@ export default function Index({ posts }) {
           >
             Only Free
           </button>
-          <img
-            src={
-              "http://localhost:3000/api/screenshot?url=https://www.youtube.com/channel/UCG8AxMVa6eutIGxrdnDxWpQ"
-            }
-          />
 
           <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
             {statePosts.map((post) => (

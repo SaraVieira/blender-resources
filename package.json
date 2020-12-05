@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^3.0.0",
+    "@netlify/zip-it-and-ship-it": "^1.5.0",
     "@tailwindcss/forms": "^0.2.1",
     "airtable": "^0.10.1",
     "cloudinary": "^1.23.0",

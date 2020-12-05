@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Resource = ({ filePath, og, data }) => (
+const Resource = ({ filePath, image, data }) => (
   <div
     key={filePath}
     className="flex flex-col rounded-lg shadow-lg overflow-hidden"
@@ -9,7 +9,7 @@ const Resource = ({ filePath, og, data }) => (
       <a href={data.Link} target="_blank" rel="noreferrer">
         <img
           className="h-48 w-full object-cover"
-          src={og.image.url}
+          src={image}
           alt={data.title}
         />
       </a>

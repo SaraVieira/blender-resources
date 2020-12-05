@@ -1,0 +1,17 @@
+{
+  "name": "screenshot",
+  "version": "1.0.0",
+  "description": "Screenshot Service",
+  "author": "",
+  "main": "index.js",
+  "license": "ISC",
+  "scripts": {
+    "deploy": "gcloud functions deploy --region=us-central1 --runtime=nodejs10  --memory=1024MB --trigger-http screenshot"
+  },
+  "dependencies": {
+    "cloudinary": "^1.23.0",
+    "dotenv": "^8.2.0",
+    "puppeteer": "^5.5.0",
+    "uuid": "^8.3.1"
+  }
+}
