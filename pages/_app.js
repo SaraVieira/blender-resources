@@ -26,7 +26,7 @@ const App = ({ Component, pageProps }) => {
         />
         <meta
           property="og:image"
-          content="https://blenderresources/public/share.png"
+          content="https://storage.googleapis.com/screenshots_blender_resources/share.png"
         />
 
         <meta property="twitter:card" content="summary_large_image" />
@@ -38,7 +38,7 @@ const App = ({ Component, pageProps }) => {
         />
         <meta
           property="twitter:image"
-          content="https://blenderresources/public/share.png"
+          content="https://storage.googleapis.com/screenshots_blender_resources/share.png"
         />
         <script
           src="https://cdn.usefathom.com/script.js"

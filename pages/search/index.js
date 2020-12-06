@@ -13,7 +13,6 @@ const DynamicComponentWithNoSSR = dynamic(
 export default function Search({ posts }) {
   const router = useRouter();
 
-  console.log(router);
   return (
     <>
       <Head>
