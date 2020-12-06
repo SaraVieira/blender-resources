@@ -14,13 +14,13 @@ export default function Layout({ children }) {
 
   return (
     <div style={{ minHeight: "100vh" }}>
-      <Header />
-      <main>{children}</main>
-      <Footer
+      <Header
         setSearchValue={setSearchValue}
         searchValue={searchValue}
         search={search}
       />
+      <main>{children}</main>
+      <Footer />
     </div>
   );
 }
