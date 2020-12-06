@@ -22,12 +22,14 @@ export default function Index({ posts }) {
       <Head></Head>
       <Layout>
         <div className="bg-gray-800">
-          <div className="relative max-w-7xl mx-auto pt-6 pb-6 flex justify-between">
+          <div className="relative max-w-7xl mx-auto pt-6 pb-6 flex justify-between max-md:flex-col max-md:justify-center max-md:items-center">
             <div className="flex justify-center flex-col">
-              <h1 className="text-gray-200 text-3xl">Blender Resources</h1>
+              <h1 className="text-gray-200 text-3xl max-md:text-center font-bold">
+                Blender Resources
+              </h1>
               <h2
                 style={{ maxWidth: "70%" }}
-                className="text-gray-200 text-3xl"
+                className="text-gray-200 text-3xl max-md:text-center max-md:m-auto max-md:mb-4 max-sm:hidden"
               >
                 curated list of resources to help your blender journey
               </h2>
