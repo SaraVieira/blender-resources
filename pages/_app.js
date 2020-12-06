@@ -1,28 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Head from "next/head";
 import "../styles/tailwind.css";
-import { useRouter } from "next/router";
-import * as Fathom from "fathom-client";
 
 const App = ({ Component, pageProps }) => {
-  const router = useRouter();
-  useEffect(() => {
-    Fathom.load("YHNPIPAF", {
-      includedDomains: ["https://blenderresources.com/"],
-    });
-
-    function onRouteChangeComplete() {
-      Fathom.trackPageview();
-    }
-    // Record a pageview when route changes
-    router.events.on("routeChangeComplete", onRouteChangeComplete);
-
-    // Unassign event listener
-    return () => {
-      router.events.off("routeChangeComplete", onRouteChangeComplete);
-    };
-  }, []);
-
   return (
     <>
       <Head>
@@ -56,6 +36,11 @@ const App = ({ Component, pageProps }) => {
           property="twitter:image"
           content="https://mblenderresourcesicomassets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png"
         />
+        <script
+          src="https://cdn.usefathom.com/script.js"
+          data-site="YHNPIPAF"
+          defer
+        ></script>
       </Head>
       <Component {...pageProps} />
     </>
