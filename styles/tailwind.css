@@ -1,5 +1,5 @@
 @import url("https://rsms.me/inter/inter.css");
-@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,800&display=swap");
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
@@ -16,7 +16,9 @@
 
 h1,
 h2 {
-  font-family: "Major Mono Display", monospace;
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 html {
@@ -81,4 +83,34 @@ code {
   50% {
     transform: scale(1);
   }
+}
+
+.hero-image {
+  max-height: 400px;
+}
+@media screen and (max-width: 768px) {
+  .hero-image {
+    max-height: auto;
+  }
+}
+
+.custom-shape-divider-bottom-1607292598 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1607292598 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 133px;
+}
+
+.custom-shape-divider-bottom-1607292598 .shape-fill {
+  fill: #ffffff;
 }
