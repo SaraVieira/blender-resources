@@ -34,18 +34,10 @@ const Resource = ({ filePath, image, data }) => (
         </a>
       </div>
       <div className="mt-6 flex items-center">
-        <div className="flex-shrink-0">
-          <a href="#">
-            <span className="sr-only">{data.free ? "Free" : "Paid"}</span>
-          </a>
-        </div>
-        <div className="ml-3">
-          <p className="text-sm font-medium text-gray-900">
-            <a href="#" className="hover:underline">
-              {data.free ? "Free" : "Paid"}
-            </a>
-          </p>
-        </div>
+        <p className="text-sm font-medium text-gray-900 flex justify-between w-full">
+          <span>{data.free ? "Free" : "Paid"}</span>
+          <span>{!data.free && data.price}</span>
+        </p>
       </div>
     </div>
   </div>

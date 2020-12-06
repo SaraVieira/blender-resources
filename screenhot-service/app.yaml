@@ -1,0 +1,5 @@
+runtime: nodejs
+env: flex
+
+env_variables:
+  GCLOUD_STORAGE_BUCKET: screenshots_blender_resources

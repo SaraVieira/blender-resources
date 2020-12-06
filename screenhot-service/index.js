@@ -1,14 +1,20 @@
 exports.screenshot = async (req, res) => {
   const puppeteer = require("puppeteer");
   const { v5 } = require("uuid");
-  const cloudinary = require("cloudinary").v2;
   require("dotenv").config();
+  const { Storage } = require("@google-cloud/storage");
 
-  cloudinary.config({
-    cloud_name: "nikkitaftw",
-    api_key: "282841499577797",
-    api_secret: process.env.API_CLOOUDINARY,
-  });
+  const bucketName = "screenshots_blender_resources";
+  const getFile = async (filename) => {
+    const [metadata] = await storage
+      .bucket(bucketName)
+      .file(filename)
+      .getMetadata();
+
+    return metadata;
+  };
+
+  const storage = new Storage({ keyFilename: "key.json" });
 
   const {
     query: { url },
@@ -22,45 +28,46 @@ exports.screenshot = async (req, res) => {
     );
     return;
   }
-  const name = v5(url, v5.URL);
-  const instances = await cloudinary.search
-    .expression(`resource_type:image AND public_id=${name}`)
-    .max_results(1)
-    .execute();
+  const name = `${v5(url, v5.URL)}.png`;
+  try {
+    const metadata = await getFile(name);
 
-  if (instances.total_count) {
-    res
-      .status(200)
-      .send(JSON.stringify({ url: instances.resources[0].secure_url }));
-    return;
-  }
+    if (metadata.name) {
+      res.status(200).send(
+        JSON.stringify({
+          url: `https://storage.googleapis.com/${metadata.bucket}/${metadata.name}`,
+        })
+      );
+      return;
+    }
+    // eslint-disable-next-line no-empty
+  } catch {}
 
   const browser = await puppeteer.launch({
     headless: true,
     args: ["--no-sandbox"],
   });
-
   const page = await browser.newPage();
-
   await page.goto(url, {
     waitUntil: ["domcontentloaded", "networkidle0"],
   });
-
   const screenshot = await page.screenshot({ encoding: "binary" });
-
   await browser.close();
 
-  const dataURI = "data:image/png;base64," + screenshot.toString("base64");
+  try {
+    await storage.bucket(bucketName).file(name).save(screenshot);
+    const newFileMetadata = await getFile(name);
 
-  cloudinary.uploader.upload(
-    dataURI,
-    { public_id: name },
-    function (_, result) {
-      res.status(200).send(
-        JSON.stringify({
-          url: result.secure_url,
-        })
-      );
-    }
-  );
+    res.status(200).send(
+      JSON.stringify({
+        url: `https://storage.googleapis.com/${newFileMetadata.bucket}/${newFileMetadata.name}`,
+      })
+    );
+  } catch (e) {
+    res.status(500).send(
+      JSON.stringify({
+        message: "There was a problem creating the file",
+      })
+    );
+  }
 };
