@@ -8,7 +8,7 @@ const Resource = ({ filePath, image, data }) => (
     <div className="flex-shrink-0">
       <a href={data.Link} target="_blank" rel="noreferrer">
         <img
-          className="h-48 w-full object-cover"
+          className="h-48 w-full object-cover object-top"
           src={image}
           alt={data.title}
         />

@@ -1,3 +1,4 @@
+@import url("https://rsms.me/inter/inter.css");
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
@@ -13,7 +14,13 @@
 }
 
 html {
-  font: 100%/1.5 system-ui;
+  font-family: "Inter", sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: "Inter var", sans-serif;
+  }
 }
 
 a {

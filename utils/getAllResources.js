@@ -17,15 +17,18 @@ export const getAllResources = async (noImage) => {
         filePath,
       };
     }
-    let image = null;
-    try {
-      const response = await fetch(
-        `https://us-central1-blender-resources.cloudfunctions.net/screenshot?url=${data.Link}`
-      );
+    let image =
+      "https://res.cloudinary.com/nikkitaftw/image/upload/v1607216072/no-image_1_psllxp.png";
 
-      const d = await response.json();
-      image = d.url;
-      // eslint-disable-next-line no-empty
+    try {
+      if (data.Link.includes("https")) {
+        const response = await fetch(
+          `https://us-central1-blender-resources.cloudfunctions.net/screenshot?url=${data.Link}`
+        );
+
+        const d = await response.json();
+        image = d.url;
+      }
     } catch (e) {
       console.log(e);
     }
