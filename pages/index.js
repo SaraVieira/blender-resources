@@ -21,6 +21,21 @@ export default function Index({ posts }) {
     <>
       <Head></Head>
       <Layout>
+        <div className="bg-gray-800">
+          <div className="relative max-w-7xl mx-auto pt-6 pb-6 flex justify-between">
+            <div className="flex justify-center flex-col">
+              <h1 className="text-gray-200 text-3xl">Blender Resources</h1>
+              <h2
+                style={{ maxWidth: "70%" }}
+                className="text-gray-200 text-3xl"
+              >
+                curated list of resources to help your blender journey
+              </h2>
+            </div>
+            <img src="/4.png" style={{ height: 400 }} />
+          </div>
+        </div>
+
         <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
           <div className="absolute inset-0">
             <div className="bg-white h-1/3 sm:h-2/3"></div>

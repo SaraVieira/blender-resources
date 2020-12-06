@@ -1,4 +1,5 @@
 @import url("https://rsms.me/inter/inter.css");
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
@@ -11,6 +12,11 @@
 :root {
   --site-color: royalblue;
   --divider-color: rgba(0, 0, 0, 0.4);
+}
+
+h1,
+h2 {
+  font-family: "Major Mono Display", monospace;
 }
 
 html {
