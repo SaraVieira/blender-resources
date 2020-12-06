@@ -3,6 +3,9 @@ exports.screenshot = async (req, res) => {
   const { v5 } = require("uuid");
   require("dotenv").config();
   const { Storage } = require("@google-cloud/storage");
+  const imagemin = require("imagemin");
+  const imageminJpegtran = require("imagemin-jpegtran");
+  const imageminPngquant = require("imagemin-pngquant");
 
   const bucketName = "screenshots_blender_resources";
   const getFile = async (filename) => {
@@ -55,7 +58,15 @@ exports.screenshot = async (req, res) => {
   await browser.close();
 
   try {
-    await storage.bucket(bucketName).file(name).save(screenshot);
+    const screen = await imagemin.buffer(screenshot, {
+      plugins: [
+        imageminJpegtran(),
+        imageminPngquant({
+          quality: [0.6, 0.8],
+        }),
+      ],
+    });
+    await storage.bucket(bucketName).file(name).save(screen);
     const newFileMetadata = await getFile(name);
 
     res.status(200).send(
@@ -64,6 +75,7 @@ exports.screenshot = async (req, res) => {
       })
     );
   } catch (e) {
+    console.log(e);
     res.status(500).send(
       JSON.stringify({
         message: "There was a problem creating the file",
