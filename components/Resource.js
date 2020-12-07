@@ -35,8 +35,18 @@ const Resource = ({ filePath, image, data }) => (
       </div>
       <div className="mt-6 flex items-center">
         <p className="text-sm font-medium text-gray-900 flex justify-between w-full">
-          <span>{data.free ? "Free" : "Paid"}</span>
-          <span>{!data.free && data.price}</span>
+          <span
+            className={`p-1 rounded-sm ${
+              data.free ? "bg-green-100 " : "bg-white "
+            }`}
+          >
+            {data.free ? "Free" : "Paid"}
+          </span>
+          {!data.free ? (
+            <span className="bg-blue-100 p-1 rounded-sm">{data.price}</span>
+          ) : (
+            <span />
+          )}
         </p>
       </div>
     </div>
