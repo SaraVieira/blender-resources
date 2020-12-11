@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Host: http://blenderresources.com/
+Sitemap: http://blenderresources.com/sitemap.xml
