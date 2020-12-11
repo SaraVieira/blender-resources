@@ -112,30 +112,21 @@ const Header = ({ setSearchValue, searchValue, search }) => {
         }}
       >
         <div className="px-2 pt-2 pb-3 space-y-1">
-          <a
-            href="#"
-            className="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900"
-          >
-            Dashboard
-          </a>
-          <a
-            href="#"
-            className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-          >
-            Team
-          </a>
-          <a
-            href="#"
-            className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-          >
-            Projects
-          </a>
-          <a
-            href="#"
-            className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-          >
-            Calendar
-          </a>
+          <Link href="/">
+            <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">
+              Home
+            </a>
+          </Link>
+          <Link href="/categories">
+            <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">
+              Categories
+            </a>
+          </Link>
+          <Link href="/add">
+            <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">
+              Add Resource
+            </a>
+          </Link>
         </div>
       </div>
     </nav>
