@@ -38,7 +38,7 @@ export const getAllResources = async (noImage) => {
       data,
       image,
       filePath,
-      lastEdited: stats.mtime.toString(),
+      lastEdited: stats.birthtime.toString(),
     };
   });
 
