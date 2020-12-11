@@ -2,6 +2,12 @@
 
 WIP for a website, to add resources please add it in the posts folder in mdx format, Danke
 
+## Runnning the website locally
+
+```
+yarn && yarn dev
+```
+
 A list of resources and tools that have helped me learn blender
 
 ## Tutorials
