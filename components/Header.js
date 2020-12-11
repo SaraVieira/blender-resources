@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import Logo from "./Logo";
 
 const active =
@@ -10,6 +11,7 @@ const nonActive =
 
 const Header = ({ setSearchValue, searchValue, search }) => {
   const router = useRouter();
+  const [show, setShow] = useState(false);
 
   return (
     <nav className="bg-gray-800">
@@ -19,6 +21,7 @@ const Header = ({ setSearchValue, searchValue, search }) => {
             <button
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-expanded="false"
+              onClick={() => setShow(!show)}
             >
               <span className="sr-only">Open main menu</span>
               <svg
@@ -86,15 +89,15 @@ const Header = ({ setSearchValue, searchValue, search }) => {
             </div>
           </div>
           <form onSubmit={search}>
-            <label htmlFor="email" className="sr-only">
+            <label htmlFor="search" className="sr-only">
               Email
             </label>
             <input
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
               type="search"
-              name="email"
-              id="email"
+              name="search"
+              id="search"
               className="text-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-600 rounded-md bg-gray-800 placeholder-gray-300"
               placeholder="Search"
             />
@@ -102,7 +105,12 @@ const Header = ({ setSearchValue, searchValue, search }) => {
         </div>
       </div>
 
-      <div className="hidden sm:hidden">
+      <div
+        className="hidden sm:hidden"
+        style={{
+          display: show ? "block" : "none",
+        }}
+      >
         <div className="px-2 pt-2 pb-3 space-y-1">
           <a
             href="#"

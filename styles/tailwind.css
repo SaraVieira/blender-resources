@@ -104,6 +104,12 @@ code {
   transform: rotate(180deg);
 }
 
+@media screen and (max-width: 768px) {
+  .custom-shape-divider-bottom-1607292598 {
+    display: none;
+  }
+}
+
 .custom-shape-divider-bottom-1607292598 svg {
   position: relative;
   display: block;
