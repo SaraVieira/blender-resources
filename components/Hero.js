@@ -1,7 +1,7 @@
 const Hero = () => (
   <>
     <div className="bg-gray-800 pb-44 max-md:pb-12">
-      <div className="relative max-w-7xl mx-auto pt-6 pb-6 flex justify-between max-md:flex-col max-md:justify-center max-md:items-center hero">
+      <div className="relative max-xl:max-w-4xl max-w-7xl mx-auto pt-6 pb-6 flex justify-between max-md:flex-col max-md:justify-center max-md:items-center hero">
         <div className="flex justify-center flex-col">
           <h1 className="text-gray-200 text-3xl max-md:text-center font-bold">
             Blender Resources
