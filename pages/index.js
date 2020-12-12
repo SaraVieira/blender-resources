@@ -8,6 +8,7 @@ import Hero from "../components/Hero";
 export default function Index({ posts, categories }) {
   const [statePosts, setStatePosts] = useState(posts);
   const [freeFilter, setFreeFilter] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   const onlyFree = () => {
     setFreeFilter((free) => !free);
@@ -19,11 +20,12 @@ export default function Index({ posts, categories }) {
   };
 
   const filterBy = (category) => {
+    setSelectedCategory(category);
     switch (category) {
-      case 'Only free':
+      case "Only free":
         onlyFree();
         break;
-      case 'All':
+      case "All":
         setFreeFilter(false);
         setStatePosts(posts);
         break;
@@ -32,7 +34,7 @@ export default function Index({ posts, categories }) {
         setStatePosts(posts.filter((p) => p.data.category === category));
         break;
     }
-  }
+  };
 
   return (
     <>
@@ -51,21 +53,21 @@ export default function Index({ posts, categories }) {
               </h2>
             </div>
             <div className="mt-5">
-              {['All', 'Only free', ...categories].map((category) => {
+              {["All", "Only free", ...categories].map((category) => {
                 return (
-                <button
-                  className={`inline-flex items-center px-2.5 py-0.5 mr-10 rounded-full text-xs font-medium ${
-                    freeFilter && category === "Only free"
-                      ? "bg-green-100 text-green-800"
-                      : "bg-gray-100 text-gray-800"
-                  }`}
-                  onClick={() => filterBy(category)}
-                  key={category}
-                >
-                  {category}
-                </button>
-                )})
-              }
+                  <button
+                    className={`inline-flex items-center px-2.5 py-0.5 mr-10 rounded-full text-xs font-medium ${
+                      category === selectedCategory
+                        ? "bg-green-100 text-green-800"
+                        : "bg-gray-100 text-gray-800"
+                    }`}
+                    onClick={() => filterBy(category)}
+                    key={category}
+                  >
+                    {category}
+                  </button>
+                );
+              })}
             </div>
 
             <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
@@ -81,8 +83,12 @@ export default function Index({ posts, categories }) {
 }
 export async function getStaticProps() {
   const posts = await getAllResources();
-  const categories = [...new Set(posts.map((post) => {
-    return post.data.category;
-  }))];
+  const categories = [
+    ...new Set(
+      posts.map((post) => {
+        return post.data.category;
+      })
+    ),
+  ];
   return { props: { posts, categories } };
 }
