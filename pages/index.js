@@ -5,7 +5,7 @@ import Resource from "../components/Resource";
 import { getAllResources } from "../utils/getAllResources";
 import Hero from "../components/Hero";
 
-export default function Index({ posts }) {
+export default function Index({ posts, categories }) {
   const [statePosts, setStatePosts] = useState(posts);
   const [freeFilter, setFreeFilter] = useState(false);
 
@@ -17,6 +17,22 @@ export default function Index({ posts }) {
       setStatePosts(posts.filter((p) => p.data.free));
     }
   };
+
+  const filterBy = (category) => {
+    switch (category) {
+      case 'Only free':
+        onlyFree();
+        break;
+      case 'All':
+        setFreeFilter(false);
+        setStatePosts(posts);
+        break;
+      default:
+        setFreeFilter(false);
+        setStatePosts(posts.filter((p) => p.data.category === category));
+        break;
+    }
+  }
 
   return (
     <>
@@ -34,16 +50,23 @@ export default function Index({ posts }) {
                 All Resources
               </h2>
             </div>
-            <button
-              className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                freeFilter
-                  ? "bg-green-100 text-green-800"
-                  : "bg-gray-100 text-gray-800"
-              }`}
-              onClick={onlyFree}
-            >
-              Only Free
-            </button>
+            <div className="mt-5">
+              {['All', 'Only free', ...categories].map((category) => {
+                return (
+                <button
+                  className={`inline-flex items-center px-2.5 py-0.5 mr-10 rounded-full text-xs font-medium ${
+                    freeFilter && category === "Only free"
+                      ? "bg-green-100 text-green-800"
+                      : "bg-gray-100 text-gray-800"
+                  }`}
+                  onClick={() => filterBy(category)}
+                  key={category}
+                >
+                  {category}
+                </button>
+                )})
+              }
+            </div>
 
             <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
               {statePosts.map((post) => (
@@ -58,5 +81,8 @@ export default function Index({ posts }) {
 }
 export async function getStaticProps() {
   const posts = await getAllResources();
-  return { props: { posts } };
+  const categories = [...new Set(posts.map((post) => {
+    return post.data.category;
+  }))];
+  return { props: { posts, categories } };
 }
