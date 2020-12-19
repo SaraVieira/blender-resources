@@ -31,7 +31,7 @@ const Filters = ({ setStatePosts, posts, categories }) => {
   };
 
   return (
-    <div className="mt-5 grid grid-cols-2 md:grid-cols-4 grid-flow-row gap-4">
+    <div className="mt-5 grid grid-cols-2 grid-flow-row gap-4 lg:grid-flow-col lg:grid-cols-none lg:auto-cols-max lg:gap-10">
       {["All", "Only free", ...categories].map((category) => {
         return (
           <button
