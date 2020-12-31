@@ -31,11 +31,11 @@ const Filters = ({ setStatePosts, posts, categories }) => {
   };
 
   return (
-    <div className="mt-5">
+    <div className="mt-5 grid grid-cols-2 grid-flow-row gap-4 lg:grid-flow-col lg:grid-cols-none lg:auto-cols-max lg:gap-10">
       {["All", "Only free", ...categories].map((category) => {
         return (
           <button
-            className={`inline-flex items-center px-2.5 py-0.5 mr-10 rounded-full text-xs font-medium ${
+            className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${
               category === selectedCategory
                 ? "bg-green-100 text-green-800"
                 : "bg-gray-100 text-gray-800"
