@@ -110,9 +110,9 @@ const App = ({ Component, pageProps }) => {
           content="https://storage.googleapis.com/screenshots_blender_resources/share.png"
         />
         <script
-          src="https://cdn.usefathom.com/script.js"
-          data-site="YHNPIPAF"
           defer
+          data-domain="blenderresources.com"
+          src="https://analytics.iamsaravieira.com/js/plausible.js"
         ></script>
       </Head>
       <Component {...pageProps} />
