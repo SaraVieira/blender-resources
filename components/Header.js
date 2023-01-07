@@ -60,31 +60,30 @@ const Header = ({ setSearchValue, searchValue, search }) => {
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex-shrink-0 flex items-center">
               <Link href="/">
-                <a>
-                  <Logo />
-                </a>
+                <Logo />
               </Link>
             </div>
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
-                <Link href="/">
-                  <a className={router.route === `/` ? active : nonActive}>
-                    Home
-                  </a>
+                <Link
+                  href="/"
+                  className={router.route === `/` ? active : nonActive}
+                >
+                  Home
                 </Link>
-                <Link href="/categories">
-                  <a
-                    className={
-                      router.route.includes(`/categories`) ? active : nonActive
-                    }
-                  >
-                    Categories
-                  </a>
+                <Link
+                  href="/categories"
+                  className={
+                    router.route.includes(`/categories`) ? active : nonActive
+                  }
+                >
+                  Categories
                 </Link>
-                <Link href="/add">
-                  <a className={router.route === `/add` ? active : nonActive}>
-                    Add Resource
-                  </a>
+                <Link
+                  href="/add"
+                  className={router.route === `/add` ? active : nonActive}
+                >
+                  Add Resource
                 </Link>
               </div>
             </div>

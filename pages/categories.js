@@ -31,11 +31,9 @@ export default function Categories({ categories }) {
                     category
                   ).toLocaleLowerCase()}`}
                 >
-                  <a>
-                    <div className="col-span-1 flex justify-center px-8 py-8 bg-gray-50 text-xl font-bold text-gray-700 border-2 hover:text-gray-100 hover:bg-gray-700 transition-DEFAULT duration-100 cursor:pointer">
-                      {category}
-                    </div>
-                  </a>
+                  <div className="col-span-1 flex justify-center px-8 py-8 bg-gray-50 text-xl font-bold text-gray-700 border-2 hover:text-gray-100 hover:bg-gray-700 transition-DEFAULT duration-100 cursor:pointer">
+                    {category}
+                  </div>
                 </Link>
               ))}
             </div>
