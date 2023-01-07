@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import "../styles/tailwind.css";
+import Script from "next/script";
 
 const App = ({ Component, pageProps }) => {
   return (
@@ -109,11 +110,11 @@ const App = ({ Component, pageProps }) => {
           property="twitter:image"
           content="https://storage.googleapis.com/screenshots_blender_resources/share.png"
         />
-        <script
+        <Script
           defer
           data-domain="blenderresources.com"
           src="https://analytics.iamsaravieira.com/js/plausible.js"
-        ></script>
+        />
       </Head>
       <Component {...pageProps} />
     </>

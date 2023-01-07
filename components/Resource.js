@@ -22,7 +22,7 @@ const Resource = ({ filePath, image, data }) => (
             as={`/categories/${encodeURIComponent(
               data.category
             ).toLocaleLowerCase()}`}
-            class="hover:underline"
+            className="hover:underline"
           >
             {data.category}
           </Link>
