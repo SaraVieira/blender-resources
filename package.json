@@ -6,7 +6,7 @@
     "dev:watch": "next-remote-watch ./posts",
     "build": "next build",
     "start": "next start",
-    "postbuild": "next-sitemap && next-on-netlify"
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.5.3",
@@ -16,7 +16,6 @@
     "gray-matter": "^4.0.3",
     "next": "latest",
     "next-mdx-remote": "^4.2.1",
-    "next-on-netlify": "^3.0.1",
     "next-remote-watch": "2.0.0",
     "open-graph-scraper": "^5.0.3",
     "overmind": "^28.0.2",
