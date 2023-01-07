@@ -50,5 +50,6 @@ export async function getStaticProps() {
       })
     ),
   ];
-  return { props: { posts, categories } };
+  console.log(posts);
+  return { props: { posts, categories: categories.filter((a) => a) } };
 }

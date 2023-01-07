@@ -42,7 +42,7 @@ const Resource = ({ filePath, image, data }) => (
           >
             {data.free ? "Free" : "Paid"}
           </span>
-          {!data.free ? (
+          {!data.free && data.price ? (
             <span className="bg-blue-100 p-1 rounded-sm">{data.price}</span>
           ) : (
             <span />
